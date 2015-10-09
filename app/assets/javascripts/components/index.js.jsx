@@ -7,7 +7,6 @@
     },
     componentDidMount: function(){
       BenchStore.addChangeListener(this._onChange);
-      ApiUtil.fetchBenches();
     },
     _onChange: function(){
       this.setState({benches: BenchStore.all()});

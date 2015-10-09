@@ -2,7 +2,7 @@ class Api::BenchesController < ApplicationController
   include Api::BenchesHelper
 
   def index
-    @benches = Bench.all
+    @benches = Bench.in_bounds(params[:bounds])
     render :index
   end
 
