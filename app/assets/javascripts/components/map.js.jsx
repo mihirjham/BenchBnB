@@ -2,13 +2,30 @@
   'use strict';
 
   var Map = root.Map = React.createClass({
+    getInitialState: function(){
+      return {benches: BenchStore.all()};
+    },
     componentDidMount: function(){
+      BenchStore.addChangeListener(this._onChange);
       var map = React.findDOMNode(this.refs.googleMap);
       var mapOptions = {
         center: {lat: 37.7758, lng: -122.435},
         zoom: 13
       };
       this.map = new google.maps.Map(map, mapOptions);
+      this.map.addListener("idle", function(){
+        ApiUtil.fetchBenches();
+      });
+
+    },
+    _onChange: function(){
+      this.setState({benches: BenchStore.all()});
+      for(var i = 0; i < this.state.benches.length; i++){
+        new google.maps.Marker({
+          position: {lat: parseFloat(this.state.benches[i].lat), lng: parseFloat(this.state.benches[i].lon)},
+          map: this.map
+        }).setMap(this.map);
+      }
     },
     render: function(){
       return(
