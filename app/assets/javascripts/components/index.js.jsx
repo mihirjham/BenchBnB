@@ -14,7 +14,13 @@
     render: function(){
       return(
         <div>
-          {this.state.benches}
+          <ul>
+            {
+              this.state.benches.map(function(bench){
+                return <li key={bench.id}>{bench.description}</li>;
+              })
+            }
+          </ul>
         </div>
       );
     }
