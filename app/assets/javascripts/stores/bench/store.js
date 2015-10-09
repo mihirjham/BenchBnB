@@ -5,6 +5,10 @@
   var resetBenches = function(benches){
     _benches = benches.slice();
   };
+
+  var addBench = function(bench){
+    _benches.push(bench);
+  }
   var CHANGE_EVENT = "CHANGE_EVENT";
 
   var BenchStore = root.BenchStore = $.extend({}, EventEmitter.prototype, {
@@ -24,6 +28,11 @@
       switch(payload.actionType){
         case BenchConstants.BENCHES_RECEIVED:
           resetBenches(payload.benches);
+          BenchStore.changed();
+          break;
+
+        case BenchConstants.BENCH_CREATED:
+          addBench(payload.bench);
           BenchStore.changed();
           break;
       }

@@ -8,6 +8,14 @@
       };
 
       AppDispatcher.dispatch(action);
+    },
+    createBench: function(bench){
+      var action = {
+        actionType: BenchConstants.BENCH_CREATED,
+        bench: bench
+      };
+
+      AppDispatcher.dispatch(action);
     }
   };
 }(this));

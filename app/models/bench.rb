@@ -8,10 +8,11 @@
 #  lon         :float            not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  seating     :integer          not null
 #
 
 class Bench < ActiveRecord::Base
-  validates :description, :lat, :lon, presence: true
+  validates :description, :lat, :lon, :seating, presence: true
   def self.in_bounds(bounds)
     benches = Bench.where("lat < ? AND lon < ? AND lat > ? and lon > ?",
                         bounds["northeast"]["lat"].to_f, bounds["northeast"]["lng"].to_f,
