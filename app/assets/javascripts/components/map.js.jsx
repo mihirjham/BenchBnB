@@ -35,7 +35,8 @@
       for(var i = 0; i < this.state.benches.length; i++){
         markers.push(new google.maps.Marker({
           position: {lat: parseFloat(this.state.benches[i].lat), lng: parseFloat(this.state.benches[i].lon)},
-          map: this.map
+          map: this.map,
+          animation: google.maps.Animation.DROP
         }));
         markers[markers.length-1].setMap(this.map);
       }
