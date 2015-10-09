@@ -18,4 +18,5 @@
 //= require react
 //= require react_ujs
 //= require components
+//= require bench_bnb
 //= require_tree .
