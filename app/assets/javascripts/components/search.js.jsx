@@ -22,6 +22,7 @@
       return(
         <div>
           <Map handleMapClick={this.handleMapClick}/>
+          <Filter />
           <Index />
         </div>
       );

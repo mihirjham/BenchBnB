@@ -13,10 +13,19 @@
 
 class Bench < ActiveRecord::Base
   validates :description, :lat, :lon, :seating, presence: true
-  def self.in_bounds(bounds)
-    benches = Bench.where("lat < ? AND lon < ? AND lat > ? and lon > ?",
-                        bounds["northeast"]["lat"].to_f, bounds["northeast"]["lng"].to_f,
-                        bounds["southwest"]["lat"].to_f, bounds["southwest"]["lng"].to_f);
+  def self.in_bounds(filters)
+    bounds = filters[:bounds];
+    minSeating = filters[:minSeating]
+    maxSeating = filters[:maxSeating]
+    if(!minSeating || !maxSeating)
+      benches = Bench.where("lat < ? AND lon < ? AND lat > ? and lon > ?",
+                          bounds["northeast"]["lat"].to_f, bounds["northeast"]["lng"].to_f,
+                          bounds["southwest"]["lat"].to_f, bounds["southwest"]["lng"].to_f);
+    else
+      benches = Bench.where("lat < ? AND lon < ? AND lat > ? and lon > ? AND seating BETWEEN ? AND ?",
+                          bounds["northeast"]["lat"].to_f, bounds["northeast"]["lng"].to_f,
+                          bounds["southwest"]["lat"].to_f, bounds["southwest"]["lng"].to_f, minSeating, maxSeating);
+    end
 
     benches
   end

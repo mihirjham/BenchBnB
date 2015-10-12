@@ -8,7 +8,7 @@
         url: "/api/benches",
         type: "get",
         dataType: "json",
-        data: {bounds: params.bounds},
+        data: {filters: params},
         success: function(responseData){
           ApiActions.receiveAll(responseData);
         }

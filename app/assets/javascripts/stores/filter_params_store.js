@@ -22,6 +22,16 @@
           _params["bounds"] = payload.bounds;
           FilterParamsStore.changed();
           break;
+
+        case FilterParamsConstants.UPDATE_MIN_SEATING:
+          _params["minSeating"] = payload.minSeating;
+          FilterParamsStore.changed();
+          break;
+
+        case FilterParamsConstants.UPDATE_MAX_SEATING:
+          _params["maxSeating"] = payload.maxSeating;
+          FilterParamsStore.changed();
+          break;
       }
     })
   });
