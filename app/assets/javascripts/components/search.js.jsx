@@ -7,7 +7,7 @@
     componentDidMount: function(){
       FilterParamsStore.addChangeListener(this._onChange);
     },
-    componentDidUnmount: function(){
+    componentWillUnmount: function(){
       FilterParamsStore.removeChangeListener(this._onChange);
     },
     _onChange: function(){
@@ -18,10 +18,13 @@
     handleMapClick: function(coords){
       this.props.history.pushState(null, "new", coords);
     },
+    handleMarkerClick: function(id){
+      this.props.history.pushState(null, "show", {id: id});
+    },
     render: function(){
       return(
         <div>
-          <Map handleMapClick={this.handleMapClick}/>
+          <Map handleMapClick={this.handleMapClick} handleMarkerClick={this.handleMarkerClick}/>
           <Filter />
           <Index />
         </div>

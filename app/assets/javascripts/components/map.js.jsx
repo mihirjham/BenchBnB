@@ -6,6 +6,9 @@
     getInitialState: function(){
       return {benches: BenchStore.all()};
     },
+    componentWillUnmount: function(){
+      BenchStore.removeChangeListener(this._onChange);
+    },
     componentDidMount: function(){
       BenchStore.addChangeListener(this._onChange);
       var map = React.findDOMNode(this.refs.googleMap);
@@ -41,6 +44,10 @@
           map: this.map,
           animation: google.maps.Animation.DROP
         }));
+
+        markers[markers.length-1].addListener("click", function(idx, e){
+          this.props.handleMarkerClick(this.state.benches[idx].id);
+        }.bind(this, i));
         markers[markers.length-1].setMap(this.map);
       }
     },

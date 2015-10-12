@@ -9,6 +9,9 @@
     componentDidMount: function(){
       BenchStore.addChangeListener(this._onChange);
     },
+    componentWillUnmount: function(){
+      BenchStore.removeChangeListener(this._onChange);
+    },
     _onChange: function(){
       this.setState({benches: BenchStore.all()});
     },
