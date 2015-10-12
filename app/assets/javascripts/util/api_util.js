@@ -2,12 +2,13 @@
   'use strict';
 
   var ApiUtil = root.ApiUtil = {
-    fetchBenches: function(bounds){
+    fetchBenches: function(){
+      var params = FilterParamsStore.getParams();
       $.ajax({
         url: "/api/benches",
         type: "get",
         dataType: "json",
-        data: {bounds: bounds},
+        data: {bounds: params.bounds},
         success: function(responseData){
           ApiActions.receiveAll(responseData);
         }

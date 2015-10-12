@@ -19,8 +19,7 @@
         var bounds = {northeast: {lat: latLngInstance.getNorthEast().J, lng: latLngInstance.getNorthEast().M},
                     southwest: {lat: latLngInstance.getSouthWest().J, lng: latLngInstance.getSouthWest().M}
                   };
-        ApiUtil.fetchBenches(bounds);
-
+        FilterParamsActions.updateBounds(bounds);
       }.bind(this));
 
       this.map.addListener("click", function(e){
