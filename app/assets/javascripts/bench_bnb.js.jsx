@@ -20,6 +20,7 @@ $(document).ready(function(){
     <Route path="/" component={App}>
       <IndexRoute component={Search}/>
       <Route path="new" component={BenchForm}/>
+      <Route path="show" component={BenchShow} />
     </Route>
   </Router>
   , document.getElementById("content"));

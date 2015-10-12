@@ -24,6 +24,13 @@
     changed: function(){
       this.emit(CHANGE_EVENT);
     },
+    getBenchById: function(id){
+      for(var i = 0; i < _benches.length; i++){
+        if(_benches[i].id === id){
+          return _benches[i];
+        }
+      }
+    },
     dispatcherID: AppDispatcher.register(function(payload){
       switch(payload.actionType){
         case BenchConstants.BENCHES_RECEIVED:
