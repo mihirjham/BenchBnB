@@ -19,7 +19,7 @@ $(document).ready(function(){
   <Router>
     <Route path="/" component={App}>
       <IndexRoute component={Search}/>
-      <Route path="benches/new" component={BenchForm}/>
+      <Route path="new" component={BenchForm}/>
     </Route>
   </Router>
   , document.getElementById("content"));

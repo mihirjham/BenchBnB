@@ -18,7 +18,7 @@
             {
               this.state.benches.map(function(bench){
                 return <li key={bench.id}>{bench.description}</li>;
-              })
+              }.bind(this))
             }
           </ul>
         </div>

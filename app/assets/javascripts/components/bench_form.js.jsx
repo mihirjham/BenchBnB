@@ -4,13 +4,10 @@
   var BenchForm = root.BenchForm = React.createClass({
     mixins: [React.addons.LinkedStateMixin, ReactRouter.History],
     getInitialState: function(){
-      return {};
+      return {lat: this.props.location.query.J, lon: this.props.location.query.M};
     },
     handleSubmit: function(e){
       e.preventDefault();
-      // ApiUtil.createBench(this.state, function(){
-      //   this.history.pushState(null, "/");
-      // }.bind(this));
       ApiUtil.createBench(this.state);
       this.history.pushState(null, "/");
     },

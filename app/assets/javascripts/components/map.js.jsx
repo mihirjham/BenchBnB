@@ -23,6 +23,10 @@
 
       }.bind(this));
 
+      this.map.addListener("click", function(e){
+        this.props.handleMapClick(e.latLng);
+      }.bind(this));
+
     },
     _onChange: function(){
       this.setState({benches: BenchStore.all()});
