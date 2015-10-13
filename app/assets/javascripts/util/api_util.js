@@ -14,7 +14,7 @@
         }
       });
     },
-    createBench: function(bench, callback){
+    createBench: function(bench){
       $.ajax({
         url: '/api/benches',
         type: "post",
@@ -22,6 +22,17 @@
         data: {bench: bench},
         success: function(responseData){
           ApiActions.createBench(responseData);
+        }
+      });
+    },
+    createReview: function(review){
+      $.ajax({
+        url: "/api/reviews",
+        type: "post",
+        dataType: "json",
+        data: {review: review},
+        success: function(responseData){
+          ApiActions.createReview(responseData);
         }
       });
     }

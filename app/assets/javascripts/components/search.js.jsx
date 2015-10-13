@@ -19,7 +19,7 @@
       this.props.history.pushState(null, "new", coords);
     },
     handleMarkerClick: function(id){
-      this.props.history.pushState(null, "show", {id: id});
+      this.props.history.pushState(null, "benches/"+id);
     },
     render: function(){
       return(

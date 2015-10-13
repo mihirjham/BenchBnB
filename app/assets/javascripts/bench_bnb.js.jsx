@@ -20,7 +20,9 @@ $(document).ready(function(){
     <Route path="/" component={App}>
       <IndexRoute component={Search}/>
       <Route path="new" component={BenchForm}/>
-      <Route path="show" component={BenchShow} />
+      <Route path="benches/:id" component={BenchShow}>
+        <Route path="review/new" component={ReviewForm}/>
+      </Route>
     </Route>
   </Router>
   , document.getElementById("content"));

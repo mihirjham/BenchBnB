@@ -16,6 +16,14 @@
       };
 
       AppDispatcher.dispatch(action);
+    },
+
+    createReview: function(bench){
+      var action = {
+        actionType: BenchConstants.REVIEW_CREATED,
+        bench: bench
+      };
+      AppDispatcher.dispatch(action);
     }
   };
 }(this));

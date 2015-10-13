@@ -8,7 +8,18 @@
 
   var addBench = function(bench){
     _benches.push(bench);
-  }
+  };
+
+  var replaceBench = function(bench){
+    for(var i = 0; i < _benches.length; i++){
+      if(_benches[i].id === bench.id){
+        _benches[i] = bench;
+        return;
+      }
+    }
+    _benches.push(bench);
+  };
+
   var CHANGE_EVENT = "CHANGE_EVENT";
 
   var BenchStore = root.BenchStore = $.extend({}, EventEmitter.prototype, {
@@ -40,6 +51,11 @@
 
         case BenchConstants.BENCH_CREATED:
           addBench(payload.bench);
+          BenchStore.changed();
+          break;
+
+        case BenchConstants.REVIEW_CREATED:
+          replaceBench(payload.bench);
           BenchStore.changed();
           break;
       }

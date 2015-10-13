@@ -16,7 +16,7 @@
       this.setState({benches: BenchStore.all()});
     },
     handleClick: function(bench){
-      this.history.pushState(null, "show", {id: bench.id} );
+      this.history.pushState(null, "benches/" +bench.id);
     },
     render: function(){
       return(
@@ -24,7 +24,9 @@
           <ul>
             {
               this.state.benches.map(function(bench){
-                return <li onClick={this.handleClick.bind(null, bench)} key={bench.id}>{bench.description}</li>;
+                return <li onClick={this.handleClick.bind(null, bench)} key={bench.id}>
+                  Description: {bench.description} Average Rating: {bench.average_rating}
+                </li>;
               }.bind(this))
             }
           </ul>
